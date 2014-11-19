@@ -1,5 +1,8 @@
 # change the working directory to /UCI HAR Dataset
 
+#load packages
+library(reshape2)
+
 # import the test data
 ds = read.table("test/subject_test.txt")
 dy = read.table("test/y_test.txt")
@@ -77,4 +80,4 @@ allDataMelt<- melt(allData, id = c("Subject", "Activity.Code"))
 TidyDataSummary <- dcast(allDataMelt, Subject + Activity.Code ~ variable, mean)
 #
 # Save the file
-write.table(DataSummary, file = "TidyDataSummary.txt", row.names = FALSE)
+write.table(TidyDataSummary, file = "TidyDataSummary.txt", row.names = FALSE)
